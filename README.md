@@ -23,7 +23,7 @@ Once you have properly configured the server you should follow the next steps:
  - "states" cell array of 1xN. Element i in the cell array should contain an array with the states variable i belongs to, if any.
  - "weights" array of doubles 1xN. All the elements are between 0 and 1 and element i represents a level of relevance of the variable i.
 
-You can find a .mat example in the example folder with the right variable names and structures. The weights represent the severity in terms of security. These data have been used in the paper J. Camacho, G. Maciá Fernández, J. E. Díaz Verdejo y P. García Teodoro. "Tackling the Big Data 4 Vs for Anomaly Detection". INFOCOM'2014 Workshop on Security and Privacy in Big Data. 2014.
+You can find a .mat example in the uploads folder with the right variable names and structures. The weights represent the severity in terms of security. These data have been used in the paper J. Camacho, G. Maciá Fernández, J. E. Díaz Verdejo y P. García Teodoro. "Tackling the Big Data 4 Vs for Anomaly Detection". INFOCOM'2014 Workshop on Security and Privacy in Big Data. 2014.
 
 **2nd**, select this .mat file with the "Choose File" button.
 
