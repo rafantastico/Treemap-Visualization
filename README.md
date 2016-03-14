@@ -5,7 +5,7 @@ The Treemap Visualization (T-Visualization) presents two levels of detail:
  - State level : This is the first level where the groups of variables are depicted as rectangles. The size of the groups depend on the number of variables within.
  - Variable level : This is the second level of detail, shown through an interactive visual interface when the user places the mouse on a specific state. In such a case, the detail of the group is depicted, showing the variables within the state. Also, the variables are shown in any other state they belong to.
 
-The variables belonging a specific state can be explored clicking on the state to get a zoom of the area of interest. The original view can be accessed clicking on the top rectangle with the title "MEDASTATE.<name of the state>".
+The variables belonging a specific state can be explored clicking on the state to get a zoom of the area of interest. The original view can be accessed clicking on the top rectangle with the title "MEDASTATE".
 
 Both states and variables are shown with a color code. The color code of the T-Visualization is based on user defined values we call weights. Weights are defined taking into account the following:
  - The color of the variables represents the relevance of each variable from white to red going through yellow. The most relevant variables are closer to red and the less relevant ones are closer to white. The definition of relevance is data specific.
