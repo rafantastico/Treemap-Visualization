@@ -65,7 +65,11 @@ parser.add_option("-t", type='float', action="store", default=0, dest="threshold
 #----
 #1--- LOAD .MAT FILE
 #----
-mat = scipy.io.loadmat(options.iname)
+try:
+	mat = scipy.io.loadmat(options.iname)
+except:
+	print ".mat file couldn't be loaded. Review the instructions to properly export your data."
+	sys.exit()
 
 try:
     #states_array = mat['states'].T
