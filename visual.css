@@ -1,11 +1,13 @@
 #chart {
   width: 960px;
   height: 500px;
-  background: #ddd;
+  background-image: url("pattern1.png");
+  background-repeat: repeat;
 }
 
 text {
   pointer-events: none;
+  /*font: 36px "Helvetica Neue", Helvetica, Arial, sans-serif;*/
 }
 
 text.tparent{

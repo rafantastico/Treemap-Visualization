@@ -9,7 +9,7 @@ function visualization(jsonName){
   .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
   .interpolate(d3.interpolateHcl);
 
-  var margin = {top: 20, right: 0, bottom: 0, left: 0},
+  var margin = {top: 22, right: 0, bottom: 0, left: 0},
   width = 960,
   height = 500 - margin.top - margin.bottom,
   formatNumber = d3.format(",d"),

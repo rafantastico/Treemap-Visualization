@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Este archivo coding:  utf-8
+# This file uses coding:  utf-8
 
 """
 Script to generate a .dot file and its correspondent gif from a .mat file with the following fields:
@@ -19,8 +19,8 @@ from optparse import OptionParser
 import subprocess
 import matplotlib.pyplot as plt
 
+col_scale = ["rgba(255,255,255,1)","rgba(255,240,181,1)","rgba(255,236,162,1)","rgba(255,231,135,1)","rgba(255,227,115,1)","rgba(255,226,101,1)","rgba(255,221,89,1)","rgba(255,162,105,1)","rgba(255,116,93,1)","rgba(255,74,74,1)"]
 
-col_scale = plt.get_cmap('hot_r',14)
 
 def addStateline(line,s,index_states,states_json,weight,weights_list):
     try:
@@ -40,18 +40,15 @@ def addStateline(line,s,index_states,states_json,weight,weights_list):
 
 def getTranColor(ind):
     colorrgb=(int(hsv(ind)[0]*255),int(hsv(ind)[1]*255),int(hsv(ind)[2]*255))
-    return "rgba({0},{1},{2},{3})".format(colorrgb[0],colorrgb[1],colorrgb[2],1)
+    return "rgba({0},{1},{2},{3})".format(colorrgb[0],colorrgb[1],colorrgb[2],0.2)
 
 def getColor(weights):
-    #weight_mean = sum(weights)/len(weights)
-    #ind = int(weight_mean*(len(color_list)-1))
     try:
         weight_max = max(weights)
     except:
         weight_max = weights
     ind = int(weight_max*(9))
-    colorrgb=(int(col_scale(ind)[0]*255),int(col_scale(ind)[1]*255),int(col_scale(ind)[2]*255))
-    return "rgba({0},{1},{2},{3})".format(colorrgb[0],colorrgb[1],colorrgb[2],1)
+    return col_scale[ind]
 
 def getSize(weight):
     return int(weight*19000)+1000
@@ -68,16 +65,15 @@ parser.add_option("-t", type='float', action="store", default=0, dest="threshold
 try:
 	mat = scipy.io.loadmat(options.iname)
 except:
-	print ".mat file couldn't be loaded. Review the instructions to properly export your data."
+	print ".mat file couldn't be loaded. Review the instructions given in the main page to properly build the .mat file with the variables: names, states and weights."
 	sys.exit()
 
 try:
-    #states_array = mat['states'].T
     states_array = mat['states']
     names_array =  mat['names']
     weights_array =  mat['weights']
 except:
-    print "There is no states, names or weights array in .mat file"
+    print "There is no states, names or weights array in .mat file."
     sys.exit()
 
 size_s = states_array.shape
@@ -116,7 +112,7 @@ for i in range(0,M):
         states.append([])
         pass
     else:
-        print "Wrong number of rows in states_array"
+        print "Wrong number of rows in states_array. It should be only one row."
         sys.exit()
 
 
@@ -134,7 +130,6 @@ for i,s in enumerate(states):
         if weights[i] >= options.threshold:
             name = names[i]
             weight = weights[i]
-            #size = getSize(weight)
             size = 1
             if len(s) == 1:
                 line = '      {{"name": "{0}", "value": {1}, "color": "{2}"}},\n'.format(name,size,getColor(weight))
@@ -145,11 +140,9 @@ for i,s in enumerate(states):
                     line = '      {{"name": "{0}", "value": {1}, "transition": "{2}", "color": "{3}"}},\n'.format(name,size,getTranColor(transition),getColor(weight))
                     #State of s1
                     addStateline(line,s_i,index_states,states_json,weight,weights_list)
-                    #state of s2
-                    #addStateline(line,s2,index_states,states_json,weight,weights_list)
                 transition += 1
 
-lines = ['{\n "name": "MEDASTATES",\n "children": [\n']
+lines = ['{\n "name": "STATES",\n "children": [\n']
 
 
 for i,state_t in enumerate(states_json):

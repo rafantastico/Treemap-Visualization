@@ -103,4 +103,4 @@ function goBack() {
     visualization(jsonName);
 </script>
 </body>
-<?php } ?>;
+<?php } ?>
