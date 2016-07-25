@@ -29,6 +29,12 @@ You can find a .mat example in the root folder with the right variable names and
 
 **3rd**, introduce a threshold for the visualization and press the "Upload" button. This threshold should be between 0 and 1. With this threshold the visualization will only show those variables in the .mat file whose weights are greater than the threshold. If 0 is selected the visualizations will show all the variables in the .mat file.
 
+Note that the minimum commands you should execute to get it work are the followings:
+
+    $ git clone git@github.com:rafantastico/Treemap-Visualization.git
+    $ cd Treemap-Visualization
+    $ php -S 0.0.0.0:8080
+
 ---
 
 The Treemap Visualization is based on a Zoomable Treemap visualization carried out by Mike Bostock. The source code can be found [here](https://bost.ocks.org/mike/treemap/).
